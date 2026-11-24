@@ -239,14 +239,9 @@ CONFIG_SHELL := $(shell if [ -x "$$BASH" ]; then echo $$BASH; \
 	  else if [ -x /bin/bash ]; then echo /bin/bash; \
 	  else echo sh; fi ; fi)
 
-# AnClark MOD: Do NOT forcibly use ccache.
-#              NOTE: If you want to use ccache, override gcc/g++ with symlinks to ccache.
-#CCACHE      := $(shell which ccache)
-#HOSTCC       = $(CCACHE) gcc
-#HOSTCXX      = $(CCACHE) g++
-HOSTCC       = gcc
-HOSTCXX      = g++
-# AnClark MOD End
+CCACHE      := $(shell which ccache)
+HOSTCC       = $(CCACHE) gcc
+HOSTCXX      = $(CCACHE) g++
 HOSTCFLAGS   = -Wall -Wmissing-prototypes -Wstrict-prototypes -O2 -fomit-frame-pointer -std=gnu89
 HOSTCXXFLAGS = -O2
 
